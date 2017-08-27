@@ -1,0 +1,75 @@
+---
+title: "Lab 3: Measuring the Acceleration of Free Fall with an Ultrasonic Motion Detector"
+author: "Jack Newsom, Chun Ho Wong, and Luke Shin"
+date: "June 18, 2017"
+output: pdf_document
+subtitle: Physics 130-1850-Lamichhane
+geometry: margin=1in
+---
+***
+
+## Objective:
+The objective of the Free Fall Lab is to determine the relationship between acceleration, velocity, and position for an object in free fall. We will do so by collecting data on all three quantities with an Ultrasonic Motion Detector for various scenarios, including true free fall and rolling down an incline.
+
+## Data and Computation:
+
+\begin{center}
+  This graph shows the $\textbf{position}$ of a ball dropped from a height with respect to time. It varies approximately $\textbf{quadratically}$ with time in the selected region.
+\end{center}
+
+  ![Position versus Time for First Bounce](image1.png)
+  
+  
+\begin{center}
+  This graph shows the $\textbf{velocity}$ of a ball dropped from a height with respect to time. It varies approximately $\textbf{linearly}$ with time in the selected region.
+\end{center}
+
+  ![Velocity versus Time for First Bounce](image2.png)
+
+
+For calculating acceleration from position data, we use the following formulas:
+
+\begin{center}
+  $x = v_0*t + \frac{g}{2}*t^2$
+  
+  $x = C + B*t + A*t^2$
+
+  $a = A*2$
+\end{center}
+
+For calculating acceleration from velocity data, we use the following formulas:
+
+\begin{center}
+  $v = v_0 + a*t$
+  
+  $v = b + m*t$
+  
+  $a = m$
+\end{center}
+
+Where in both above equations, $a$ refers to the acceleration due to gravity, $g$.
+
+
+
+To calculate percent error, we use the following formula:
+
+\begin{center}
+  $\%err = \frac{|theoretical-measured|}{theoretical} * 100\%$  
+\end{center}
+
+
+\begin{center}
+  \begin{tabular}{| l | l | l | p{3cm} |}
+  \hline  & Measured Acceleration $(\frac{m}{s^2})$ & Percent Error $(\%)$ \\ \hline
+  \hline From Position Data & 9.834 & 0.347 \\ \hline
+  \hline From Velocity Data & 9.859 & 0.602 \\ \hline
+  \end{tabular}
+\end{center}
+
+## Conclusion:
+
+Our data was fairly accurate in this lab, with both measurements of gravitational acceleration $g$ coming out with less than 1% error. 
+
+One possible source of error for the lab is the height the ball was dropped from relative to the UMD. We noticed in early trials that closeness to the UMD at the beginning of the drop led to bad data. It is possible that we did not drop the ball in the UMD's optimal zone for measurement in the trials included here.
+
+Another source of error could be dropping the ball with horizontal velocity. Another observation we made in an early trial was that having horizontal or perpendicular velocity led to inaccurate data. It is possible that in the trials included above, the ball was dropped with a horizontal velocity significant enough to create bad data.

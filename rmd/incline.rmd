@@ -1,0 +1,94 @@
+---
+title: "Lab 5: Energy Conservation on An Inclined Track"
+author: "Jack Newsom, Chun Ho Wong, and Luke Shin"
+date: "July 2, 2017"
+output: pdf_document
+---
+***
+
+## Objective:
+The objective of the Energy Conservation lab is to test the principle of conservation of energy in the case of a lab cart rolling down a track. In order to do so, we use an ultrasonic motion detector to measure the position, velocity, and acceleration of the cart as it travels down the track. Using derived formulas, we can determine the kinetic and potential energies at any point along the cart's path which can ultimately be used to test the law of conservation of energy.  
+
+## Theory:
+Because we are assuming the effects of friction between the cart and the track are negligible, the total energy between each collision with the bumper at the end of the track should be constant. Therefore,
+
+
+\begin{center}
+Total Mechanical Energy = Kinetic Energy + Gravitational Potential Energy
+\end{center}
+
+
+We are able to measure velocity directly with the UMD and express it as a function of time ($V(t)$). We can therefore derive an expression for the kinetic energy of the cart relative to the UMD:
+
+
+\begin{center}
+Kinetic Energy = $\frac{1}{2}m[V(t)]^2$
+\end{center}
+
+
+Because this experiment takes place on the surface of the Earth and $\Delta h$ is not large, we can assume the Gravitational Potential Energy is approximately equal to the work done by gravity from $h_{i}$ to $h_{f}$. We do not have a direct measurement of $\Delta h$, but we do know the angle of elevation between the table of the track $\theta$ and we are able to measure the cart's distance from the bottom of the track as a function of time ($X(t)$). We can therefore calculate the value of $\Delta h$ through trigonometry:
+
+
+\begin{center}
+$sin(\theta) = \frac{X(t)}{\Delta h}$
+
+$\Delta h = X(t)sin(\theta)$
+\end{center}
+
+
+We can use this equality to derive an expression for Gravitational Potential Energy in terms of measured quantities.
+
+
+\begin{center}
+Gravitational Potential Energy = $W_{gravity}$ = $mg\Delta h$ = $mgX(t)sin(\theta)$
+\end{center}
+
+
+Based on our above assumptions about the nature of our laboratory apparatus, we can now provide an expression for the total mechanical energy of the cart with respect to time:
+
+
+\begin{center}
+ME(t) = KE(t) + PE(t)
+
+ME(t) = $\frac{1}{2}m[V(t)]^2 + mgX(t)sin(\theta)$
+\end{center}
+
+\newpage
+
+## Data and Computation:
+
+\begin{center}
+This is a graph of the three different energy quantities we are interested in for this lab. $\textbf{Total Mechanical Energy (TE)}$ is marked in blue, $\textbf{Gravitational Potential Energy (PE)}$ is marked in red, and $\textbf{Kinetic Energy (KE)}$ is marked in orange. All three quantities appear to vary approximately $\textbf{quadratically}$ with time.
+\end{center}
+
+![Graphs of Mechanical, Kinetic, and Potential Energies with Respect to Time](energygraphs.png)
+
+\begin{center}
+This is a graph of the $\textbf{Position}$ of the cart relative to the bumper at the end of the track. Position appears to vary $\textbf{quadratically}$ with respect to time.
+\end{center}
+
+![Graph of Position Relative to End of Track with Respect to Time](positiongraph.png)
+
+We measured the following values for various quantities in the lab:
+
+\begin{center}
+  \begin{tabular}{| l | l | p{3cm} |}
+  \hline Mass (g) & 259.5 \\ \hline
+  \hline Length of Track (cm) & 219.8 \\ \hline
+  \hline Height of Wood (cm) & 11.5 \\ \hline
+  \end{tabular}
+\end{center}
+
+\newpage
+
+## Conclusions:
+
+There are several things to note about the energy graph inserted above. Firstly, Kinetic and Gravitational Potential Energy are inversely related: as one increases, the other must decrease. This is obvious under ideal conditions, since total mechanical energy is conserved meaning a decrease in kinetic energy implies an increase in gravitational potential energy and vice versa.
+
+Another item of interest is the sharp drop off in total mechanical energy the instant the cart makes contact with the bumper at the end of the track. This occurs because the collision causes a significant amount of the cart's kinetic energy to dissapate into sound, heat, etc.
+
+One puzzling property of our energy graph is the apparent nonconstancy of our total mechanical energy graph between collisions. This is likely due to measurement error in the UMD resulting from miscalibration. Ideally, we would expect the total mechanical energy graph to have exactly zero slope between collisions.
+
+Another source of error in the lab could be our value of $\theta$. We used our measurements of the length of the ramp and the height of the wood block to calculate $\theta$ but it is possible that our measurements of these quantities started from the wrong position or that we misread the ruler we were using entirely.
+
+A third possible source of error could be mismeasurement of the mass of the lab cart. If this was a significant source of error, it was likely because we misread the number shown on the scale and not that the scale itself was wrong. A higher-than-reality value for the mass would in turn increase our maximum calculated gravitational potential energy and total mechanical energy values.

@@ -1,0 +1,328 @@
+---
+title: 'Lab 1: Testing The Ideal Gas Law'
+author: "Jack Newsom"
+date: "August 22, 2017"
+output: pdf_document
+header-includes:
+  - \usepackage{array}
+  - \usepackage{caption}
+  - \usepackage{float}
+  - \usepackage{tikz}
+  - \usetikzlibrary{arrows}
+  - \usetikzlibrary{shapes}
+  - \tikzset{>={stealth}}
+  - \usepackage{wrapfig}
+  - \usepackage{multicol}
+---
+***
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+options(warn=-1)
+```
+
+\newenvironment{conditions}
+  {\par\vspace{\abovedisplayskip}\noindent\begin{tabular}{>{$}l<{$} @{${}\sim{}$} l}}
+  {\end{tabular}\par\vspace{\belowdisplayskip}}
+
+##Abstract
+The purpose of this lab was to assess the accuracy of the ideal gas law in standard lab conditions through three different activities. In the first activity, we used a syringe and a pressure sensor to simulate a sealed chamber. By moving the plunger on the syringe to various points, we were able to collect data on the relationship between volume and pressure. We used Excel to graph the points and find the best-fit curve for the data. We observed the following where P is measured in [kPa] and V in [mL]:
+
+\begin{center}
+$P = 868.77[kPa \cdot mL] \cdot V^{-.916}$
+\end{center}
+
+In the third activity, we used the pressure sensor again to measure the relationship between depth in a column of water and pressure. We observed the following where P is measured in [kPa] and D in [cm]:
+
+\begin{center}
+$P = 0.0896D + 102.8$
+\end{center}
+
+##Introduction
+###Activity One
+The fundamental relationship in the first activity is the ideal gas law which relates several fundamental variables:
+
+\begin{equation}
+PV = nRT
+\end{equation}
+
+Where
+\begin{conditions}
+P & pressure \\
+V & volume \\
+n & moles of gas \\
+R & universal gas constant \\
+T & temperature of gas \\
+\end{conditions}
+
+\newpage
+
+If the temperature and amount of gas in consideration are constant, the ideal gas law equation can be graphed in the following way:
+
+\begin{figure}[H]
+```{r,echo=FALSE, out.height="7cm", fig.align='center'}
+library(ggplot2)
+eq = function(v){1/v}
+
+ggplot(data.frame(x=c(5, 20)), aes(x=x)) + stat_function(fun=eq, geom="line") + xlab("Volume") + ylab("Pressure") + theme(axis.text=element_blank(), axis.ticks=element_blank())
+```
+  \caption{Volume vs Pressure According to Ideal Gas Law}
+  \label{fig:1}
+\end{figure}
+
+
+In order to test this relationship, we connected a syringe to a pressure sensor which was in turn connected to a computer with data collection software. We varied the location of the plunger to vary the internal volume of the syringe and measured the resulting pressures.
+
+***
+
+###Activity Three
+
+In this activity we tested the validity of an equation relating absolute pressure and depth in a uniform liquid:
+
+\begin{equation}
+P = P_0 + \rho gd
+\end{equation}
+
+Where
+\begin{conditions}
+P & absolute pressure \\
+P_0 & atmospheric pressure \\
+\rho & density of fluid \\
+d & depth below surface
+\end{conditions}
+
+Assuming constant density and gravity, the absolute pressure equation can be also be graphed in two dimensions:
+\vspace{-.15in}
+\begin{figure}[H]
+```{r, echo=FALSE, out.height="7cm", fig.align='center'}
+
+eq = function(d){d+4}
+
+ggplot(data.frame(x=c(1, 10)), aes(x=x)) + stat_function(fun=eq, geom="line") + xlab("Depth") + ylab("Pressure") + theme(axis.text=element_blank(), axis.ticks=element_blank())
+```
+  \caption{Depth vs Pressure According to Absolute Pressure Equation}
+  \label{fig:2}
+\end{figure}
+
+To confirm the validity of this relationship in lab, we again used the pressure sensor connected to a computer with data collection software. However, instead of attaching a syringe, we connected a long plastic tube with an open end. This allowed us to measure the pressure at various locations in a column of water in a graduated cylinder.
+
+##Results
+The temperature in the lab room at the time of the activities was observed to be T = 21.3[C$^\circ$] = 294.45[K].
+```{r, echo=FALSE}
+library(pander)
+
+vol = c(10,20,18,16,14,12,10,9,8,7,6,5,10)
+pres1 = c(103.22,53.88,61.11,69.05,78.55,91.88,108.53,120.20,133.12,147.26,167.69,190.48,101.51)
+
+act1data = data.frame(vol,pres1)
+names(act1data) = c('Volume [mL]', 'Pressure [kPa]')
+
+depth = c(0,2,4,6,8,10,12,14,16,18,20,22,24,26,28,30)
+pres2 = c(102.78,102.95,103.12,103.35,103.52,103.69,103.92,104.09,104.26,104.43,104.65,104.77,104.88,105.16,105.28,105.45)
+
+act2data = data.frame(depth, pres2)
+names(act2data) = c('Depth [cm]', 'Pressure [kPa]')
+
+act1plot = ggplot(data = act1data, aes(x=vol, y=pres1)) + xlab("Volume [mL]") + ylab("Pressure [kPa]")+ geom_point() + geom_smooth() + annotate(geom="text", label="P==868.77*V^{-0.916}", parse=TRUE, x=12, y=130)
+act2plot = ggplot(data = act2data, aes(x=depth, y=pres2)) + xlab("Depth [cm]") + ylab("Pressure [kPa]") + geom_point() + geom_smooth() + annotate(geom="text", label="P==0.0896*D + 102.8", parse=TRUE, x=20, y=103.5)
+```
+###Activity One
+\begin{figure}[H]
+```{r, echo=FALSE, message=FALSE, out.height="7cm", fig.align='center'}
+act1plot
+```
+  \caption{Volume vs Pressure According to Experimental Data}
+  \label{fig:3}
+\end{figure}
+```{r, echo=FALSE, message=FALSE}
+pander(act1data)
+```
+
+We used Excel to process this data and generate an equation relating our observed volume and pressure values.
+
+\begin{center}
+  \begin{equation}
+    P = 868.77 [kPa \cdot mL] \cdot V ^{-0.916}
+  \end{equation}
+\end{center}
+
+If we assume the number of moles in the syringe is the average of $n_1$ and $n_2$ (calculated below), we get $\bar n = 4.42 \cdot 10^{-4}$ [mol]. We can use this assumption to quantify the relationship between pressure and volume that the ideal gas law would predict.
+
+\begin{center}
+  $P = \frac{nRT}{V}$
+  
+  $P = \frac{4.42 \cdot 10^{-4} \cdot 8.314 \cdot 294.45}{V}$
+  
+  $P = \frac{1.08[kPa \cdot L]}{V}$
+\end{center}
+
+Where pressure is measured in [kPa] and volume is measured in [L]. In order to compare to our observed equation, we alter the derived equation to express volume in [mL].
+
+\begin{center}
+  \begin{equation}
+    P = \frac{1080[kPa \cdot mL]}{V}
+  \end{equation}
+\end{center}
+
+This derived result is fairly similar to the equation based on observed data, (3). However, the coefficient of $\frac{1}{V}$ is 24$\%$ larger in (4). Additionally, the exponent of V is slightly (8.4$\%$) smaller in (3) than in (4). The net effect of these two discrepancies is that (4) > (3) for V < 13.34[mL] and (3) > (4) for V > 13.34[mL].
+
+###Activity Two
+Activity Two involved various calculations on Activity One's data.
+
+The first two calculations were of the number of moles of gas contained in the syringe at two different times. $n_1$ refers to the number of moles when the volume was 18[mL] and the pressure was 61.11[kPa]; $n_2$ refers to the number of moles when the volume was 8[mL] and the pressure was 133.12[kPa].
+
+
+\begin{center}
+  $P \cdot V = n \cdot R \cdot T$
+    
+  \begin{equation}
+    n = \frac{P \cdot V}{R \cdot T}
+  \end{equation}
+\end{center}
+
+$n_1$:
+\begin{center}
+  
+  $$
+    n_1 = \frac{61.11 [kPa] \cdot .018 [L]}{8.314[\frac{L \cdot kPa}{Kmol}] \cdot 294.45 [K]}
+  $$
+  
+    $n_1 = 4.49 \cdot 10^{-4}$[mol]
+\end{center}
+
+$n_2$:
+\begin{center}
+  $$
+    n_2 = \frac{133.120 [kPa] \cdot .008 [L]}{8.314[\frac{L \cdot kPa}{Kmol}] \cdot 294.45 [K]}
+  $$
+    $n_2 = 4.35 \cdot 10^{-4}$[mol]
+\end{center}
+
+The second calculation involved determining the absolute uncertainties of both $n_1$ and $n_2$. The uncertainty in the pressure measurement was given: $\delta P =$ 4 [kPa]. The markings on the syringe were only accurate to 1 [mL] so we assumed $\delta V =$ 1[mL] = .001[L]. Our measurement of temperature was only accurate to .1[C$^\circ$] so we assumed $\delta T =$ .1[C$^\circ$] = .1[K]. Using these values, we can derive an uncertainty for $n_1$ and $n_2$.
+
+\begin{center}
+  \begin{equation}
+    \delta n = n(\frac{\delta P}{P} + \frac{\delta V}{V} + \frac{\delta T}{T})
+  \end{equation}
+\end{center}
+
+$\delta n_1$:
+
+\begin{center}
+  $$
+    \delta n_1 = 4.49 \cdot 10^{-4}( \frac{4}{61.11} +  \frac{.001}{.018} +  \frac{.1}{294.45})
+  $$
+
+  $\delta n_1= 5.5 \cdot 10^{-5}$ [mol]
+\end{center}
+
+$\delta n_2$:
+
+\begin{center}
+  
+  $$
+    \delta n_2 = 4.35 \cdot 10^{-4}(  \frac{4}{133.120} +  \frac{.001}{.008} +  \frac{.1}{294.45})
+  $$
+  
+  $\delta n_2 = 6.8 \cdot 10^{-5}$ [mol]
+\end{center}
+
+The final part of Activity Two was to determine if our $n_1$ and $n_2$ values were consistent with each other. One test of consistency involves the following inequality:
+
+\begin{center}
+  \begin{equation}
+    |a-b|<\delta a + \delta b
+  \end{equation}
+\end{center}
+
+If this inequality is true, then $a$ and $b$ are said to be consistent with each other. If we apply (5) to $n_1$ and $n_2$, we determine that the two values are consistent:
+
+\begin{center}
+  $|n_1 - n_2| < \delta n_1 + \delta n_2$
+  
+  $|(4.49 - 4.35) \cdot 10^{-4}| < (5.5 + 6.8) \cdot 10^{-5}$
+  
+  $1.4 \cdot 10^{-5} < 1.23 \cdot 10^{-4}$
+\end{center}
+
+Again, we say $n_1$ and $n_2$ are consistent because the magnitude of their difference is less than the sum of their uncertainties. Consistency between the two values implies the total amount of gas in the syringe did not change between the two data collection times.
+
+###Activity Three
+\begin{figure}[H]
+```{r, echo=FALSE, message=FALSE, out.height="7cm", fig.align='center'}
+act2plot
+```
+  \caption{Depth vs Pressure According to Experimental Data}
+  \label{fig:4}
+\end{figure}
+
+```{r, echo=FALSE, message=FALSE}
+pander(act2data)
+```
+
+We used Excel to generate an equation for the relationship between observed values of P and D.
+
+\begin{center}
+  \begin{equation}
+    \Delta P = 0.0896[\frac{kPa}{cm}] D 
+  \end{equation}
+\end{center}
+
+In order to compare (7) with (2), we used a few observations. First, we used the pressure sensor to determine that the atmospheric pressure in the room was 102.78 [kPa]. Because we the classroom is fairly close to sea level, we assumed $g = 9.81[\frac{m}{s^2}]$. Finally, we assumed the water in the cylinder had a constant density $\rho = 1000[\frac{kg}{m^3}]$ We plugged these numbers into two and received the following:
+
+\begin{center}
+  \begin{equation}
+    \Delta P = 0.0981[\frac{kPa}{cm}] D
+  \end{equation}
+\end{center}
+
+We know, by (2), that the coefficient of D in (8) and (9) is equal to the product of the density of water and the gravitational acceleration. We can use this fact to calculate a theoretical value for the density of water from (8) and an observed one from (9).
+
+Observed $\rho_{H_2 O}$:
+\begin{center}
+  $\rho_{H_2 O} = \frac{0.0896}{g} \cdot 10^5 [\frac{kg}{m^3}]$
+  
+  $\rho_{H_2 O} = 913\frac{kg}{m^3}$
+\end{center}
+
+Theoretical $\rho_{H_2 O}$:
+\begin{center}
+  $\rho_{H_2 O} = \frac{0.0981}{g} \cdot 10^5 [\frac{kg}{m^3}]$
+  
+  $\rho_{H_2 O} = 1000 [\frac{kg}{m^3}]$
+\end{center}
+
+Our observed value of $\rho_{H_2 O}$ was 8.7$\%$ lower than the theoretical value.
+
+##Conclusions
+
+By comparing measured and theoretical values in different activities, we were able to assess the validity of the ideal gas law and a provided equation relating depth and pressure in a uniform liquid.
+
+In Activity One, we tested the ideal gas law by measuring the pressure inside a syringe at various different volumes. According to the ideal gas law, the equation relating pressure and volume should have been the following:
+
+\begin{center}
+  $P= \frac{1080[kPa \cdot mL]}{V}$
+\end{center}
+
+We observed the following, however:
+
+\begin{center}
+  $P = \frac{868.77[kPa \cdot mL]}{V^{0.916}}$
+\end{center}
+
+The difference between the two equations is not significant enough to bring the validity of the ideal gas law into question. A variety of errors could have contributed to the discrepancy. Some possibilities include copying down incorrect values for pressure, not reading the volume markings on the syringe properly, and systematic error in the pressure readings from the sensor.
+
+
+The purpose of Activity Three was to test a provided equation relating pressure and depth in a uniform fluid. According to observed environmental variables, the equation predicted the following relationship:
+
+\begin{center}
+  $\Delta P = 0.0981[\frac{kPa}{cm}]D$
+\end{center}
+
+In experiment, our data implied a slightly different equation:
+
+\begin{center}
+  $\Delta P = 0.0896[\frac{kPa}{cm}]D$
+\end{center}
+
+Again, the 8.7$\%$ difference in the coefficients of D in the two equations is not large enough to raise questions about the accuracy of the equation. Some possible sources of error include assuming an incorrect value of $g$ for the lab room, placing the pressure sensor at the incorrect height in the cylinder, or impurities in the water used to fill the cylinder.

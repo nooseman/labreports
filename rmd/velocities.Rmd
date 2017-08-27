@@ -1,0 +1,144 @@
+---
+title: "Lab 2: Exploring Instantaneous and Average Velocities"
+author: "Jack Newsom, Chun Ho Wong, and Luke Shin"
+date: "June 7, 2017"
+output: pdf_document
+subtitle: Physics 130-1850-Lamichhane
+geometry: margin=1in
+---
+***
+
+## Objective:
+The objective of the Instantaneous and Average Velocities Lab is to determine the relationship between instantaneous and average velocities for a lab cart on an inclined track. In order to do so, we test if the average velocity across two arbitrarily selected points along the track is equal to the average of the velocities at both points.
+
+## Theory:
+The formula we use to test the above statement is:
+
+\begin{center}
+  $V_{ave} = \frac{V_1 + V_2}{2}$
+\end{center}
+
+Where:
+
+  $V_{ave}$ = $\frac{\Delta D_{1-2}}{\Delta t_{1-2}}$
+  
+  $V_1$ = $\frac{\Delta D_{cart}}{\Delta t_{1}}$
+  
+  $V_2$ = $\frac{\Delta D_{cart}}{\Delta t_{2}}$
+  
+  
+  $\Delta D_{1-2}$ = Distance between two points
+  
+  $\Delta D_{cart}$ = Distance between paper strips on lab cart
+  
+  $\Delta t_{1-2}$ = Time taken for lab cart to travel from point 1 to point 2
+  
+  $\Delta t_{1},\Delta t_{2}$ = Time taken for both paper strips to pass by point 1 or 2
+
+## Data and Computation:
+###Data:
+We observed the following for the trials where we only collected data at the second photogate:
+
+\begin{center}
+  \begin{tabular}{| l | l | l | l | l | l | p{3cm} |}
+  \hline $X(cm)$ & $\delta X (cm)$ & $t(s)$ & $\delta t(s)$ & $V\frac{cm}{s}$ & $\delta V(\frac{cm}{s})$ \\ \hline
+  \hline 8 & 0.1 & 0.0773 & 0.0001 & 103 & 1.43 \\ \hline
+  \hline 6 & 0.1 & 0.0543 & 0.0001 & 110. & 2.05 \\ \hline
+  \hline 4 & 0.1 & 0.0373 & 0.0001 & 107 & 2.98  \\ \hline
+  \hline 2 & 0.1 & 0.0225 & 0.0001 & 88.9 & 4.86 \\ \hline
+  \hline 1 & 0.1 & 0.0081 & 0.0001 & 123 & 14.0 \\ \hline
+  \end{tabular}
+\end{center}
+
+There seems to be a trend in the uncertainties. As the measured distance $X$ decreases, the uncertainty increases.
+
+Based on this fact, the 8cm measurement was probably the 'best' because it had the lowest uncertainty relative to $X$. 
+
+We used $X=8cm$ as our separation distance for the rest of the lab.
+
+We collected the following data for time measurements across photogates 1 and 2:
+
+\begin{center}
+  \begin{tabular}{c c}
+  Distance between paper strips, $x$ = 8cm & $\delta x$ = 0.1cm \\
+  Distance between photogates, $D$ = 100cm & $\delta D$ = .2cm \\
+  \end{tabular}
+
+  \begin{tabular}{ | l | l | l | l | l | l | p{3cm} |}
+  \hline Trial & $t_1(s)$ & $\delta t_1(s)$ & $t_2(s)$ & $\delta t_2(s)$\\ \hline
+  \hline 1 & 0.1389 & 0.0001 & 0.0749 & 0.0001 \\ \hline
+  \hline 2 & 0.1383 & 0.0001 & 0.0749 & 0.0001 \\ \hline
+  \hline 3 & 0.1396 & 0.0001 & 0.0754 & 0.0001 \\ \hline
+  \hline 4 & 0.1385 & 0.0001 & 0.0744 & 0.0001 \\ \hline
+  \hline 5 & 0.1394 & 0.0001 & 0.0751 & 0.0001 \\ \hline
+  \end{tabular}
+  
+  Which leads to the following average values:
+  
+  \begin{tabular}{c c}
+  $\bar t_1$ = 0.1389s & $\delta \bar t_1$ = 0.00075s \\
+  $\bar t_2$ = 0.0749s & $\delta \bar t_2$ = 0.0006s
+  \end{tabular}
+\end{center}
+
+We collected the following data for time taken to pass between photogates 1 and 2:
+
+\begin{center}
+  Total time, $T$ = 1.27(s)
+  $\delta T$ = .16(s)
+\end{center}
+
+These data lead to the following velocities at various points:
+
+\begin{center}
+  \begin{tabular}{c c}
+    $V_1$ = 57.58$\frac{cm}{s}$  & $\delta V_1$ = 1.036$\frac{cm}{s}$ \\
+    $V_2$ = 106.8$\frac{cm}{s}$  & $\delta V_2$ = 2.207$\frac{cm}{s}$ \\
+    $V_{ave}$ = 78.7$\frac{cm}{s}$  & $\delta V_{ave}$ = 11.5$\frac{cm}{s}$ \\
+  \end{tabular}
+\end{center}
+
+We can use the calculated values $V_1$ and $V_2$ to compute a different average velocity, $aveV$ (hereafter written as $\bar V$):
+
+\begin{center}
+  $\bar V$ = 82.19$\frac{cm}{s}$
+  $\delta \bar V$ =1.62$\frac{cm}{s}$
+\end{center}
+
+###Consistency Calculation:
+
+Our measured values of $t_1$ and $t_2$ give the following values:
+
+\begin{center}
+  $|V_{1} - V_{2}| = |57.58\frac{cm}{s}-106.75\frac{cm}{s}| = 49.1\frac{cm}{s}$
+  
+  $\delta V_1 + \delta V_2 = 1.036\frac{cm}{s} + 2.207\frac{cm}{s}=3.243\frac{cm}{s}$
+  
+  Which implies $V_1$ and $V_2$ are different from each other because
+  
+  $|V_{1} - V_{2}| > \delta V_1 + \delta V_2$ 
+  
+\end{center}
+
+We now compare ave$V$ ($\bar V$) and $V_{ave}$. Using a measured value of $T (t_{1-2})$ and the same values for $t_{1}$ and $t_{2}$ as above:
+
+\begin{center}
+  $|\bar V - V_{ave}| = |82.19\frac{cm}{s} - 78.74\frac{cm}{s}|= 3.45\frac{cm}{s}$
+  
+  $\delta \bar V + \delta V_{ave} = 1.62\frac{cm}{s}+11.53\frac{cm}{s}=13.15\frac{cm}{s}$
+  
+  Which implies $\bar V$ and $V_{ave}$ are consistent with each other because
+  
+  $|\bar V - V_{ave}| < \delta \bar V + \delta V_{ave}$
+
+\end{center}
+
+
+##Conclusion:
+Our results line up well with what would be expected. $V_1$ and $V_2$ shouldn't be consistent because they represent the speed of the lab cart at two different points along the track. The track was sloped so the lab cart should have accelerated as it went down, meaning its speed should increase from point 1 to point 2.
+
+We had similar results with $aveV (\bar V)$ and $V_ave$. Although they were not exactly the same, the large amount of uncertainty in the measurement of $V_{ave}$ allows us to conclude that the two averages are consistent with each other.
+
+Reaction time error probably contributed significantly to the measurement of $T$. The person using the timer had to start the timer at the moment the cart passed photogate 1 and stop it the moment the cart passed photogate 2. Therefore, in this case, the muddying effects of reaction time are doubled.
+
+Another source of error could be due to improperly set-up photogates. If the photogates were not perfectly perpendicular to the lab track (or at least at the same angle relative to the track), the actual separation of the points of measurement in the photogates would deviate from the expected distance of 100cm. This would lead to $aveV$ and $V_{ave}$ being even less consistent.

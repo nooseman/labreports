@@ -1,0 +1,256 @@
+---
+title: "Lab 7: Static Equilibrium"
+author: "Jack Newsom, Chun Ho Wong, and Luke Shin"
+date: "July 16, 2017"
+header-includes:
+  - \usepackage{tikz}
+  - \usetikzlibrary{arrows}
+  - \tikzset{>={stealth}}
+output: pdf_document
+---
+***
+
+## Objective
+The objective of the Static Equilibrium lab is to study the effects of net torque and net force through experimental analysis of a hanging mass system. We do so by determining how far away from the center of mass of a meter stick two hanging masses have to be to create static equilibrium.
+
+
+
+
+
+\begin{center}
+\begin{tikzpicture}
+
+\filldraw[inner color=yellow,outer color=brown, thick] (0,0)rectangle (4,0.5);
+
+\draw[->, thick] (.5,0)--(.5,2);
+\draw[->, thick] (3.5,0)--(3.5,2);
+\draw[->, thick] (2,0)--(2,-2);
+
+\node at (.5, 2.3) {$T_1=W_{m1}$};
+\node at (3.5, 2.3) {$T_2=W_{m2}$};
+\node at (2, -2.3) {$W=m_{stick}\cdot g$};
+
+
+\filldraw[inner color=gray, outer color=brown, thick] (8,-.25)rectangle (8.5,.25);
+
+\draw[->, thick] (8.15, 0)--(8.15, 2);
+\draw[->, thick] (8.35, 0)--(8.35, 2);
+\draw[->, thick] (8.25, 0)--(8.25,-2);
+
+\node at (7.75, 2) {$T_1$}; 
+\node at (8.75, 2) {$T_2$};
+\node at (8.75, -2) {$W$};
+
+\end{tikzpicture}
+\end{center}
+## Theory
+As mentioned above, there are two conditions for static equilibrium:
+
+\begin{center}
+1 $\Sigma F = 0$
+
+2 $\Sigma \tau = 0$
+\end{center}
+
+Therefore, in order for the meter stick to be still relative to the ground, the torques and forces acting on the meter stick must sum to zero.
+
+Calculations of $\Sigma F$ are simple. There are three forces acting on the meter stick: two tension forces and the meter stick's weight. The tension forces are effectively equal to the weights of the hanging masses pulling on either string, so we can conclude that if the sum of the two hanging masses equals the mass of the meter stick, $\Sigma F$ will be 0.
+
+$\Sigma \tau$ is slightly more complex. In order to calculate a torque, the magnitude of the force and the amount of separation between the object's axis of rotation and force's location of action must both be known. This is where the decision to use a meter stick over a generic rod comes in handy. We can shift the tension-carrying strings up or down the meter stick to apply varying torques; the magnitudes can be determined using the markings on the stick. In order to use this method, the center of mass of the rod must be determined experimentally.
+
+\newpage
+
+## Data and Computation
+We tested four different 'cases' in this lab:
+
+
+1: Tension-carrying strings are set equidistant from meter stick's center of mass. Both are placed 10cm from the end of the rod. The stick's 10cm mark is considered the pivot location.
+
+2: Same as Case 1, but 50g are added at 50cm mark of the meter stick. Again, the 10cm mark is used as the pivot location.
+
+3: Same as Case 2, but the 50g are shifted to the 20cm mark of the meter stick. 10cm is used as the pivot location.
+
+4: Same as Case 3, except 50cm mark is used as pivot location.
+
+
+\begin{center}
+  \begin{tabular}{| l | l | l | p{3cm} |}
+  \hline  Case & Mass @ 90cm & Mass @ 10cm \\ \hline
+  \hline 1 & 67g & 66g \\ \hline
+  \hline 2 & 93g & 91g \\ \hline
+  \hline 3 & 73g & 110g \\ \hline
+  \end{tabular}
+\end{center}
+
+The meter stick's mass was 132.2g and its center of mass was approximately 50.cm from either end. Note that the pivot point is marked with $\bullet$.
+
+
+Case 1:
+
+\begin{center}
+\begin{tikzpicture}
+
+\filldraw[inner color=yellow,outer color=brown, thick] (0,0)rectangle (4,0.5);
+
+\draw[->, thick] (.5,0)--(.5,2);
+\draw[->, thick] (3.5,0)--(3.5,2);
+\draw[->, thick] (2,0)--(2,-2);
+
+\node at (.5, 2.3) {$T=W_{m1}$};
+\node at (3.5, 2.3) {$T=W_{m2}$};
+\node at (2, -2.3) {$W=m_{stick}\cdot g$};
+\node at (3.5, .25) {$\bullet$};
+
+\end{tikzpicture}
+\end{center}
+
+\begin{center}
+$\Sigma F = W_{hanging mass 1} + W_{hanging mass 2} - W_{meter stick}$
+
+$\Sigma F = g(m_{hanging mass 1} + m_{hanging mass 2} - m_{meter stick})$
+
+$\Sigma F = 9.81\cdot 10^{-3}(67. + 66. - 132.2)$
+
+Percent Difference$_{F}  = 100 -  100\cdot \frac{F_{up}}{F_{down}}$
+
+$\Sigma \tau = \tau_{hanging mass 1} + \tau_{hanging mass 2} + \tau_{meter stick}$
+
+$\Sigma \tau = 0 \cdot W_{hanging mass 1} - (90-10) \cdot W_{hanging mass 2} + (50-10) \cdot W_{meter stick}$
+
+Percent Difference$_{\tau} = 100 - 100 \cdot \frac{\tau_{cw}}{\tau_{ccw}}$
+
+\begin{tabular}{| l | l | p{3cm} |}
+  \hline $\Sigma F$ & $0.0078N$\\ \hline
+  \hline $\%Diff_{F}$ & $-0.61\%$ \\ \hline
+  \hline $\Sigma \tau$ & $-0.0071N\cdot m$\\ \hline
+  \hline $\%Diff_{\tau}$ & $-1.4\%$ \\ \hline
+\end{tabular}
+\end{center}
+
+\newpage
+
+Case 2:
+
+\begin{center}
+\begin{tikzpicture}
+
+\filldraw[inner color=yellow,outer color=brown, thick] (0,0)rectangle (4,0.5);
+
+\draw[->, thick] (.5,0)--(.5,2);
+\draw[->, thick] (3.5,0)--(3.5,2);
+\draw[->, thick] (2,0)--(2,-3);
+
+\node at (.5, 2.3) {$T=W_{m1}$};
+\node at (3.5, 2.3) {$T=W_{m2}$};
+\node at (.4, -1.5) {$W_1=m_{stick}\cdot g$};
+\node at (3.7, -1.5) {$W_2=m_{attached}\cdot g$};
+\node at (3.5, .25) {$\bullet$};
+
+\end{tikzpicture}
+\end{center}
+
+\begin{center}
+$\Sigma F = g(m_{hanging mass 1} + m_{hanging mass 2} - m_{attached mass} - m_{meter stick})$
+
+Percent Difference$_{F} = 100 - 100 \cdot \frac{F_{up}}{F_{down}}$
+
+$\Sigma \tau = \tau_{hanging mass 1} + \tau_{hanging mass 2} + \tau_{attached mass} + \tau_{meter stick}$
+
+Percent Difference$_{\tau} = 100 - 100 \cdot \frac{\tau_{cw}}{\tau_{ccw}}$
+
+\begin{tabular}{| l | l | p{3cm} |}
+  \hline $\Sigma F$ & $0.0018N$\\ \hline
+  \hline $\%Diff_{F}$ & $0.99\%$ \\ \hline
+  \hline $\Sigma \tau$ & $-0.151N\cdot m$\\ \hline
+  \hline $\%Diff_{\tau}$ & $2.0\%$ \\ \hline
+\end{tabular}
+\end{center}
+
+Case 3:
+\begin{center}
+\begin{tikzpicture}
+
+\filldraw[inner color=yellow,outer color=brown, thick] (0,0)rectangle (4,0.5);
+
+\draw[->, thick] (.5,0)--(.5,2);
+\draw[->, thick] (3.5,0)--(3.5,2);
+\draw[->, thick] (2,0)--(2,-2);
+\draw[->, thick] (3,0)--(3,-2);
+
+\node at (.5, 2.3) {$T=W_{m1}$};
+\node at (3.5, 2.3) {$T=W_{m2}$};
+\node at (.4, -1.5) {$W_1=m_{stick}\cdot g$};
+\node at (4.5, -1.5) {$W_2=m_{attached}\cdot g$};
+\node at (3.5, .25) {$\bullet$};
+
+\end{tikzpicture}
+\end{center}
+
+\begin{center}
+$\Sigma F = g(m_{hanging mass 1} + m_{hanging mass 2} - m_{attached mass} - m_{meter stick})$
+
+Percent Difference$_{F} = 100 - 100 \cdot \frac{F_{up}}{F_{down}}$
+
+$\Sigma \tau = \tau_{hanging mass 1} + \tau_{hanging mass 2} + \tau_{attached mass} + \tau_{meter stick}$
+
+Percent Difference$_{\tau} = 100 - 100 \cdot \frac{\tau_{cw}}{\tau_{ccw}}$
+
+\begin{tabular}{| l | l | p{3cm} |}
+  \hline $\Sigma F$ & $0.0079N$\\ \hline
+  \hline $\%Diff_{F}$ & $0.44\%$ \\ \hline
+  \hline $\Sigma \tau$ & $-1.1N\cdot m$\\ \hline
+  \hline $\%Diff_{\tau}$ & $0.90\%$ \\ \hline
+\end{tabular}
+\end{center}
+
+
+\newpage
+
+Case 4:
+
+\begin{center}
+\begin{tikzpicture}
+
+\filldraw[inner color=yellow,outer color=brown, thick] (0,0)rectangle (4,0.5);
+
+\draw[->, thick] (.5,0)--(.5,2);
+\draw[->, thick] (3.5,0)--(3.5,2);
+\draw[->, thick] (2,0)--(2,-2);
+\draw[->, thick] (3,0)--(3,-2);
+
+\node at (.5, 2.3) {$T=W_{m1}$};
+\node at (3.5, 2.3) {$T=W_{m2}$};
+\node at (.4, -1.5) {$W_1=m_{stick}\cdot g$};
+\node at (4.5, -1.5) {$W_2=m_{attached}\cdot g$};
+\node at (2, .25) {$\bullet$};
+
+\end{tikzpicture}
+\end{center}
+
+
+\begin{center}
+$\Sigma F = g(m_{hanging mass 1} + m_{hanging mass 2} - m_{attached mass} - m_{meter stick})$
+
+Percent Difference$_{F} = 100 - 100 \cdot \frac{F_{up}}{F_{down}}$
+
+$\Sigma \tau = \tau_{hanging mass 1} + \tau_{hanging mass 2} + \tau_{attached mass} + \tau_{meter stick}$
+
+Percent Difference$_{\tau} = 100 - 100 \cdot \frac{\tau_{cw}}{\tau_{ccw}}$
+
+\begin{tabular}{| l | l | p{3cm} |}
+  \hline $\Sigma F$ & $0.0079N$\\ \hline
+  \hline $\%Diff_{F}$ & $-0.44\%$ \\ \hline
+  \hline $\Sigma \tau$ & $-0.0020N\cdot m$\\ \hline
+  \hline $\%Diff_{\tau}$ & $0.45\%$ \\ \hline
+\end{tabular}
+\end{center}
+
+
+## Conclusion
+Overall, our experimental error was low. Most cases had errors below 1% and all were below 2%. It is worth noting that in every case, the percent difference between forces was always lower than the percent difference between torques. This implies that we had more erroneous measurements involved in our torque calculation than in our force calculation.
+
+We believe these data confirm the conditions for static equilibrium. The small percent differences in each case are easily explained by experimental error. If our percent differences had larger than, say, 10%, experimental error would not be a great alibi. We would then have to conclude that our data implied the previously stated conditions were not sufficient for static equilibrium.
+
+Considering the torque-force percent-difference-difference, some amount of error in the measurement of the separation between the masses' and the pivot point seems likely. Because we were using a meter stick that was only precise to the nearest millimeter, there is probably some error on the order of a ten-thousandth of a meter.
+
+Another probable source of error in the lab was error associated with the measurement of the hanging masses. In lab, we did not use a scale to get a precise total for all of the attached masses which may have created error.

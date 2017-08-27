@@ -1,1 +1,1 @@
-"# labreports" 
+This is a collection of lab reports I've made with RStudio's RMarkdown.
